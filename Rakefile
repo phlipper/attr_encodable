@@ -2,7 +2,7 @@ require 'rake'
 begin
   require 'rspec/core'
   require 'rspec/core/rake_task'
-rescue MissingSourceFile 
+rescue MissingSourceFile
   module RSpec
     module Core
       class RakeTask
@@ -58,5 +58,7 @@ Jeweler::Tasks.new do |gemspec|
   gemspec.test_files = Dir["{spec}/**/*"]
   gemspec.add_development_dependency 'rcov', '>= 0.9.9'
   gemspec.add_development_dependency 'rspec', '>= 2.0'
-  gemspec.add_dependency 'redis', '>= 2.1.1'
+  gemspec.add_development_dependency 'activerecord', '>= 3.0'
+  gemspec.add_development_dependency 'sqlite3', '>= 1.3.4'
+  gemspec.add_development_dependency 'jeweler', '>= 1.6.4'
 end

@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Flip Sasser"]
-  s.date = %q{2011-07-14}
+  s.authors = [%q{Flip Sasser}]
+  s.date = %q{2011-08-02}
   s.description = %q{
     attr_encodable enables you to set up defaults for what is included or excluded when you serialize an ActiveRecord object. This is especially useful for protecting private attributes when building a public API.
   }
@@ -24,29 +24,36 @@ Gem::Specification.new do |s|
     "lib/attr_encodable.rb"
   ]
   s.homepage = %q{http://github.com/Plinq/attr_encodable}
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.6}
   s.summary = %q{An attribute black- or white-list for ActiveRecord serialization}
-  s.test_files = ["spec/attr_encodable_spec.rb"]
+  s.test_files = [%q{spec/attr_encodable_spec.rb}]
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<attr_encodable>, [">= 0"])
       s.add_development_dependency(%q<rcov>, [">= 0.9.9"])
       s.add_development_dependency(%q<rspec>, [">= 2.0"])
       s.add_development_dependency(%q<activerecord>, [">= 3.0"])
       s.add_development_dependency(%q<sqlite3>, [">= 1.3.4"])
+      s.add_development_dependency(%q<jeweler>, [">= 1.6.4"])
     else
+      s.add_dependency(%q<attr_encodable>, [">= 0"])
       s.add_dependency(%q<rcov>, [">= 0.9.9"])
       s.add_dependency(%q<rspec>, [">= 2.0"])
       s.add_dependency(%q<activerecord>, [">= 3.0"])
       s.add_dependency(%q<sqlite3>, [">= 1.3.4"])
+      s.add_dependency(%q<jeweler>, [">= 1.6.4"])
     end
   else
+    s.add_dependency(%q<attr_encodable>, [">= 0"])
     s.add_dependency(%q<rcov>, [">= 0.9.9"])
     s.add_dependency(%q<rspec>, [">= 2.0"])
     s.add_dependency(%q<activerecord>, [">= 3.0"])
     s.add_dependency(%q<sqlite3>, [">= 1.3.4"])
+    s.add_dependency(%q<jeweler>, [">= 1.6.4"])
   end
 end
+
