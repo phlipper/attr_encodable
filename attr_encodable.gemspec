@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Flip Sasser}]
-  s.date = %q{2011-08-02}
+  s.date = %q{2011-08-03}
   s.description = %q{
     attr_encodable enables you to set up defaults for what is included or excluded when you serialize an ActiveRecord object. This is especially useful for protecting private attributes when building a public API.
   }
@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.require_paths = [%q{lib}]
   s.rubygems_version = %q{1.8.6}
   s.summary = %q{An attribute black- or white-list for ActiveRecord serialization}
-  s.test_files = [%q{spec/attr_encodable_spec.rb}, %q{spec/mongoid_spec.rb}]
+  s.test_files = [%q{spec/active_record_spec.rb}, %q{spec/mongoid_spec.rb}, %q{spec/setup}, %q{spec/setup/active_record.rb}, %q{spec/setup/mongoid.rb}]
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
