@@ -40,6 +40,8 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<mongoid>, [">= 2.1.2"])
       s.add_development_dependency(%q<sqlite3>, [">= 1.3.4"])
       s.add_development_dependency(%q<jeweler>, [">= 1.6.4"])
+      s.add_development_dependency(%q<bundler>, [">= 0"])
+      s.add_development_dependency(%q<rake>, [">= 0"])
     else
       s.add_dependency(%q<attr_encodable>, [">= 0"])
       s.add_dependency(%q<rcov>, [">= 0.9.9"])
@@ -48,6 +50,8 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<mongoid>, [">= 2.1.2"])
       s.add_dependency(%q<sqlite3>, [">= 1.3.4"])
       s.add_dependency(%q<jeweler>, [">= 1.6.4"])
+      s.add_dependency(%q<bundler>, [">= 0"])
+      s.add_dependency(%q<rake>, [">= 0"])
     end
   else
     s.add_dependency(%q<attr_encodable>, [">= 0"])
@@ -57,6 +61,8 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<mongoid>, [">= 2.1.2"])
     s.add_dependency(%q<sqlite3>, [">= 1.3.4"])
     s.add_dependency(%q<jeweler>, [">= 1.6.4"])
+    s.add_dependency(%q<bundler>, [">= 0"])
+    s.add_dependency(%q<rake>, [">= 0"])
   end
 end
 

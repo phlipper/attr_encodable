@@ -62,4 +62,6 @@ Jeweler::Tasks.new do |gemspec|
   gemspec.add_development_dependency 'mongoid', '>= 2.1.2'
   gemspec.add_development_dependency 'sqlite3', '>= 1.3.4'
   gemspec.add_development_dependency 'jeweler', '>= 1.6.4'
+  gemspec.add_development_dependency 'bundler'
+  gemspec.add_development_dependency 'rake'
 end
