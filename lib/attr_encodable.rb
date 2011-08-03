@@ -1,9 +1,7 @@
-%w[active_record mongoid].each do |lib|
-  begin
-    require lib
-  rescue LoadError => e
-    nil
-  end
+begin
+  require "mongoid"
+rescue LoadError => e
+  nil
 end
 
 module Encodable
