@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.require_paths = [%q{lib}]
   s.rubygems_version = %q{1.8.6}
   s.summary = %q{An attribute black- or white-list for ActiveRecord serialization}
-  s.test_files = [%q{spec/attr_encodable_spec.rb}]
+  s.test_files = [%q{spec/attr_encodable_spec.rb}, %q{spec/mongoid_spec.rb}]
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
@@ -37,6 +37,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rcov>, [">= 0.9.9"])
       s.add_development_dependency(%q<rspec>, [">= 2.0"])
       s.add_development_dependency(%q<activerecord>, [">= 3.0"])
+      s.add_development_dependency(%q<mongoid>, [">= 2.1.2"])
       s.add_development_dependency(%q<sqlite3>, [">= 1.3.4"])
       s.add_development_dependency(%q<jeweler>, [">= 1.6.4"])
     else
@@ -44,6 +45,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rcov>, [">= 0.9.9"])
       s.add_dependency(%q<rspec>, [">= 2.0"])
       s.add_dependency(%q<activerecord>, [">= 3.0"])
+      s.add_dependency(%q<mongoid>, [">= 2.1.2"])
       s.add_dependency(%q<sqlite3>, [">= 1.3.4"])
       s.add_dependency(%q<jeweler>, [">= 1.6.4"])
     end
@@ -52,6 +54,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rcov>, [">= 0.9.9"])
     s.add_dependency(%q<rspec>, [">= 2.0"])
     s.add_dependency(%q<activerecord>, [">= 3.0"])
+    s.add_dependency(%q<mongoid>, [">= 2.1.2"])
     s.add_dependency(%q<sqlite3>, [">= 1.3.4"])
     s.add_dependency(%q<jeweler>, [">= 1.6.4"])
   end

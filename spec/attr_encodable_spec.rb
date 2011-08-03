@@ -1,3 +1,5 @@
+require 'securerandom'
+require 'setup/active_record'
 require "lib/attr_encodable"
 
 describe Encodable do
@@ -7,38 +9,12 @@ describe Encodable do
   end
 
   before :each do
-    ActiveRecord::Base.include_root_in_json = false
-    ActiveRecord::Base.establish_connection({:adapter => 'sqlite3', :database => ':memory:', :pool => 5, :timeout => 5000})
-    class ::Permission < ActiveRecord::Base; belongs_to :user; def hello; "World!"; end; end
-    class ::User < ActiveRecord::Base; has_many :permissions; def foobar; "baz"; end; end
-    silence_stream(STDOUT) do
-      ActiveRecord::Schema.define do
-        create_table :permissions, :force => true do |t|
-          t.belongs_to :user
-          t.string :name
-        end
-        create_table :users, :force => true do |t|
-          t.string   "login",              :limit => 48
-          t.string   "email",              :limit => 128
-          t.string   "first_name",         :limit => 32
-          t.string   "last_name",          :limit => 32
-          t.string   "encrypted_password", :limit => 60
-          t.boolean  "developer",                         :default => false
-          t.boolean  "admin",                          :default => false
-          t.boolean  "password_set",                      :default => true
-          t.boolean  "verified",                          :default => false
-          t.datetime "created_at"
-          t.datetime "updated_at"
-          t.integer  "notifications"
-        end
-      end
-    end
     @user = User.create({
       :login => "flipsasser",
       :first_name => "flip",
       :last_name => "sasser",
       :email => "flip@foobar.com",
-      :encrypted_password => ActiveSupport::SecureRandom.hex(30),
+      :encrypted_password => SecureRandom.hex(30),
       :developer => true,
       :admin => true,
       :password_set => true,
@@ -131,12 +107,12 @@ describe Encodable do
       as_json[:permissions].first['id'].should be_nil
       as_json['id'].should_not be_nil
     end
-    
-    # it "should allow me to whitelist attributes" do
-    #   User.attr_encodable :login, :first_name, :last_name
-    #   @user.as_json.should == @user.attributes.slice('login', 'first_name', 'last_name')
-    # end
-    # 
+
+    it "should allow me to whitelist attributes" do
+      User.attr_encodable :login, :first_name, :last_name
+      @user.as_json.should == @user.attributes.slice('login', 'first_name', 'last_name')
+    end
+    #
     # it "should allow me to blacklist attributes" do
     #   User.attr_unencodable :login, :first_name, :last_name
     #   @user.as_json.should == @user.attributes.except('login', 'first_name', 'last_name')
@@ -161,12 +137,12 @@ describe Encodable do
 
     it "should let me reassign attributes alongside regular attributes" do
       User.attr_encodable :login, :last_name, :id => :identifier
-      @user.as_json.should == {'identifier' => 1, 'login' => 'flipsasser', 'last_name' => 'sasser'}
+      @user.as_json.should == {'identifier' => @user.id, 'login' => 'flipsasser', 'last_name' => 'sasser'}
     end
-    
+
     it "should let me reassign multiple attributes with one delcaration" do
       User.attr_encodable :id => :identifier, :first_name => :foobar
-      @user.as_json.should == {'identifier' => 1, 'foobar' => 'flip'}
+      @user.as_json.should == {'identifier' => @user.id, 'foobar' => 'flip'}
     end
 
     it "should let me reassign :methods" do
